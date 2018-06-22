@@ -1,5 +1,5 @@
 {
-  "name": "ember-i18n",
+  "name": "mber-i18n",
   "version": "5.2.1",
   "description": "Internationalization for Ember",
   "directories": {
@@ -13,10 +13,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/jamesarosen/ember-i18n.git"
+    "url": "http://github.com/izelnakri/ember-i18n.git"
   },
   "engines": {
-    "node": "^4.5 || 6.* || >= 7.*"
+    "node": "^10.*"
   },
   "author": "",
   "license": "Apache-2.0",
