@@ -146,12 +146,16 @@ function getFlattenedTranslations(id, owner) {
 
 // Walk up confiugration objects from most specific to least.
 function walkConfigs(id, owner, fn) {
-  // let maybeAppConfig = owner.factoryFor(`locale:${id}/config`);
-  // let appConfig = maybeAppConfig && maybeAppConfig.class;
-  // if (appConfig) { fn(appConfig); }
+  const userDefinedConfigPath = `${owner.application.modulePrefix}/src/locales/${id}/config`;
+
+  if (window.requirejs.entries[userDefinedConfigPath]) {
+    let maybeAppConfig = window.require(`${owner.application.modulePrefix}/src/locales/${id}/config`);
+    let appConfig = maybeAppConfig && maybeAppConfig.default;
+    if (appConfig) { fn(appConfig); }
+  }
 
   let maybeAddonConfig = window.require(`ember-i18n/config/${id}`);
-  let addonConfig = maybeAddonConfig && maybeAddonConfig.class;
+  let addonConfig = maybeAddonConfig && maybeAddonConfig.default;
   if (addonConfig) { fn(addonConfig); }
 
   const parentId = parentLocale(id);
